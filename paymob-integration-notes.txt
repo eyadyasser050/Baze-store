@@ -1,0 +1,24 @@
+/**
+ * paymob-integration.md (SERVER SIDE)
+ *
+ * This file is a placeholder with instructions — do NOT include secret keys client-side.
+ *
+ * Steps to integrate Paymob (short version):
+ * 1. Create Paymob merchant account at https://paymob.com/ and get API key (test first).
+ * 2. Implement a server endpoint that:
+ *    - Authenticates with Paymob using your API key to request an auth token.
+ *    - Creates an order / payment reference and requests the iframe or payment key.
+ *    - Returns the payment URL/token to the client which opens Paymob payment page/iframe.
+ *
+ * Example flow (node/express outline):
+ *
+ * POST /api/create-payment
+ *  - receive cart details, amount, customer info
+ *  - request auth token: POST https://accept.paymobsolutions.com/api/auth/tokens {api_key}
+ *  - register order: POST /ecommerce/orders with token
+ *  - request payment key: POST /acceptance/payment_keys with order info
+ *  - respond with iframe_url (or payment token) to client
+ *
+ * Paymob docs: https://accept.paymobsolutions.com/docs/
+ *
+ */
